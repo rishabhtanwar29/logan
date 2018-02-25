@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.digitalhome.FanActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:titleTextColor="@android:color/white"
+            android:background="@color/colorPrimary"
+            android:id="@+id/toolbar"/>
 
         <TextView
             android:text="Fan 1"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:id="@+id/textView11"
+            android:layout_below="@id/toolbar"
+            android:id="@+id/textView1"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
         <SeekBar
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:id="@+id/fseekBar1"
-            android:layout_below="@+id/textView11"
+            android:layout_below="@+id/textView1"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@+id/ftoggleButton1"/>
 
@@ -27,13 +36,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ftoggleButton1"
-            android:layout_below="@+id/textView11"
+            android:layout_below="@+id/textView1"
             android:layout_alignParentEnd="true"/>
         <TextView
             android:text="Fan 2"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:id="@+id/textView12"
+            android:id="@+id/textView2"
             android:layout_below="@+id/fseekBar1"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -41,7 +50,7 @@
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:id="@+id/fseekBar2"
-            android:layout_below="@+id/textView12"
+            android:layout_below="@+id/textView2"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@+id/ftoggleButton2"/>
 
@@ -50,192 +59,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ftoggleButton2"
-            android:layout_below="@+id/textView12"
+            android:layout_below="@+id/textView2"
             android:layout_alignParentEnd="true"/>
-        <TextView
-            android:text="Fan 3"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/textView13"
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sendbutton2"
+            android:layout_alignParentBottom="true"
             android:layout_below="@+id/fseekBar2"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <SeekBar
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/fseekBar3"
-            android:layout_below="@+id/textView13"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/ftoggleButton3"/>
-
-        <ToggleButton
-            android:text="ToggleButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ftoggleButton3"
-            android:layout_below="@+id/textView13"
-            android:layout_alignParentEnd="true"/>
-        <TextView
-            android:text="Fan 4"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/textView14"
-            android:layout_below="@+id/fseekBar3"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <SeekBar
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/fseekBar4"
-            android:layout_below="@+id/textView14"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/ftoggleButton4"/>
-
-        <ToggleButton
-            android:text="ToggleButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ftoggleButton4"
-            android:layout_below="@+id/textView14"
-            android:layout_alignParentEnd="true"/>
-        <TextView
-            android:text="Fan 5"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/textView15"
-            android:layout_below="@+id/fseekBar4"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <SeekBar
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/fseekBar5"
-            android:layout_below="@+id/textView15"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/ftoggleButton5"/>
-
-        <ToggleButton
-            android:text="ToggleButton5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ftoggleButton5"
-            android:layout_below="@+id/textView15"
-            android:layout_alignParentEnd="true"/>
-        <TextView
-            android:text="Fan 6"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/textView16"
-            android:layout_below="@+id/fseekBar5"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <SeekBar
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/fseekBar6"
-            android:layout_below="@+id/textView16"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/ftoggleButton6"/>
-
-        <ToggleButton
-            android:text="ToggleButton6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ftoggleButton6"
-            android:layout_below="@+id/textView16"
-            android:layout_alignParentEnd="true"/>
-        <TextView
-            android:text="Fan 7"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/textView17"
-            android:layout_below="@+id/fseekBar6"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <SeekBar
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/fseekBar7"
-            android:layout_below="@+id/textView17"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/ftoggleButton7"/>
-
-        <ToggleButton
-            android:text="ToggleButton7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ftoggleButton7"
-            android:layout_below="@+id/textView17"
-            android:layout_alignParentEnd="true"/>
-        <TextView
-            android:text="Fan 8"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/textView18"
-            android:layout_below="@+id/fseekBar7"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <SeekBar
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/fseekBar8"
-            android:layout_below="@+id/textView18"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/ftoggleButton8"/>
-
-        <ToggleButton
-            android:text="ToggleButton8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ftoggleButton8"
-            android:layout_below="@+id/textView18"
-            android:layout_alignParentEnd="true"/>
-        <TextView
-            android:text="Fan 9"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/textView19"
-            android:layout_below="@+id/fseekBar8"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <SeekBar
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/fseekBar9"
-            android:layout_below="@+id/textView19"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/ftoggleButton9"/>
-
-        <ToggleButton
-            android:text="ToggleButton9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ftoggleButton9"
-            android:layout_below="@+id/textView19"
-            android:layout_alignParentEnd="true"/>
-        <TextView
-            android:text="Fan 10"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/textView20"
-            android:layout_below="@+id/fseekBar9"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <SeekBar
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:id="@+id/fseekBar10"
-            android:layout_below="@+id/textView20"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/ftoggleButton10"/>
-
-        <ToggleButton
-            android:text="ToggleButton10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ftoggleButton10"
-            android:layout_below="@+id/textView20"
-            android:layout_alignParentEnd="true"/>
+            android:layout_marginEnd="77dp"
+            android:text="Send" />
 
     </RelativeLayout>
 </ScrollView>
