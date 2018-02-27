@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.IOException;
 import okhttp3.Call;
@@ -45,7 +47,6 @@ public class BlankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_blank, container, false);
 
         username = (EditText) view.findViewById(R.id.username);
@@ -66,42 +67,59 @@ public class BlankFragment extends Fragment {
                         .addHeader("csrfmiddlewaretoken", "QcKL3lX85tCNjRiJb2epemlZ4EZ5nun7Ip3sOqK9UioCXg4JRTpnSbrT0coEDwWC")
                         .addHeader("Content-Type", "application/x-www-form-urlencoded")
                         .addHeader("Cache-Control", "no-cache")
-                        //.addHeader("Postman-Token", "ad2c219a-2483-df90-3c7f-d75980d82824")
+                        .addHeader("Postman-Token", "ad2c219a-2483-df90-3c7f-d75980d82824")
                         .build();
 
                 client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        /**String mMessage = e.getMessage().toString();
-                         Log.w("failure Response", mMessage);*/
-                        Toast.makeText(getContext(), "Username or password is incorrect", Toast.LENGTH_LONG).show();
+                        getActivity().runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(getActivity(), "No internet connection!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
-
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        /**String mMessage = response.body().string();*/
                         if (response.isSuccessful()) {
                             try {
                                 response = client.newCall(request).execute();
                                 JSONObject myResponse = new JSONObject(response.body().string());
-                                //Log.i(TAG,myResponse.getString("token"));
                                 sharedPreferences = getContext().getSharedPreferences("myToken", Context.MODE_PRIVATE);
                                 editor = sharedPreferences.edit();
                                 editor.putString("token", myResponse.getString("token"));
                                 editor.commit();
 
+                                Request request = new Request.Builder()
+                                        .url("https://home-automation-aries.herokuapp.com/api/get-id/")
+                                        .get()
+                                        .addHeader("Authorization", "Token "+myResponse.getString("token"))
+                                        .addHeader("Cache-Control", "no-cache")
+                                        .addHeader("Postman-Token", "c0d322e9-3eba-f0d2-fd3a-de28252a9f11")
+                                        .build();
+                                Response idresponse = client.newCall(request).execute();
+                                JSONArray arr=new JSONArray(idresponse.body().string());
+                                JSONObject myIdResponse = arr.getJSONObject(0);
+                                sharedPreferences = getContext().getSharedPreferences("myId", Context.MODE_PRIVATE);
+                                editor = sharedPreferences.edit();
+                                editor.putString("id", myIdResponse.getString("id"));
+                                editor.commit();
+
                                 MainFragment mainFragment= new MainFragment();
                                 FragmentManager fm = getFragmentManager();
-                                BlankFragment fragment= (BlankFragment) fm.findFragmentByTag("login");
                                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                                fragmentTransaction.remove(fragment);
+                                fragmentTransaction.replace(R.id.fragment,mainFragment);
                                 fragmentTransaction.commit();
-                                fragmentTransaction.add(R.id.fragment,mainFragment);
-                                fragmentTransaction.commit();
-
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
+                        }
+                        else {
+                            getActivity().runOnUiThread(new Runnable() {
+                                public void run() {
+                                    Toast.makeText(getActivity(), "Username or password is incorrect!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
 
                     }

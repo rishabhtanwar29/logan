@@ -96,18 +96,20 @@ public class LightActivity extends AppCompatActivity {
 
     private void myfunction(Boolean lmyvar , Boolean lmyvar2) {
 
-        SharedPreferences sharedPreferences=getSharedPreferences("myToken", Context.MODE_PRIVATE);
-        String str = sharedPreferences.getString("token", null);
+        SharedPreferences tokenSharedPreferences=getSharedPreferences("myToken", Context.MODE_PRIVATE);
+        String strToken = tokenSharedPreferences.getString("token", null);
+        SharedPreferences idSharedPreferences=getSharedPreferences("myId", Context.MODE_PRIVATE);
+        String strId = idSharedPreferences.getString("id", null);
 
         MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
         RequestBody body = RequestBody.create(mediaType,"------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item1Bool\"\r\n\r\n"+lmyvar+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item1Value\"\r\n\r\n0\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item2Bool\"\r\n\r\n"+lmyvar2+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item2Value\"\r\n\r\n0\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
         request = new Request.Builder()
-                .url("https://home-automation-aries.herokuapp.com/api/update/2/")
+                .url("https://home-automation-aries.herokuapp.com/api/update/"+strId+"/")
                 .put(body)
                 .addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-                .addHeader("Authorization", "Token "+str)
+                .addHeader("Authorization", "Token "+strToken)
                 .addHeader("Cache-Control", "no-cache")
-                //.addHeader("Postman-Token", "c15ae0f5-decd-c961-7e4b-95109a850d6a")
+                .addHeader("Postman-Token", "c15ae0f5-decd-c961-7e4b-95109a850d6a")
                 .build();
 
 
