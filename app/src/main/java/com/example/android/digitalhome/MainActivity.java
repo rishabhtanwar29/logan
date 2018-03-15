@@ -31,7 +31,6 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     private static Bundle bundle = new Bundle();
-    ToggleButton mtoggle;
 
     SharedPreferences sharedPreferences;
     String str;
@@ -55,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.fragment,mainFragment,"main");
             fragmentTransaction.commit();
         }
-
-        mtoggle = (ToggleButton) findViewById(R.id.mtoggleButton1);
 
     }
 

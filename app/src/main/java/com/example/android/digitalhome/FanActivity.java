@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.io.IOException;
@@ -35,12 +36,13 @@ public class FanActivity extends AppCompatActivity {
     SeekBar fseekbar2;
 
     Button btnSendHttpRequest2;
-
     OkHttpClient client;
     Request request;
 
     Boolean myvar;
     Boolean myvar2;
+    int progress1=100;
+    int progress2=100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,22 +60,41 @@ public class FanActivity extends AppCompatActivity {
 
         ftoggle1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    myvar = true;
-                } else {
-                    myvar = false;
-                }
+                if (isChecked) {myvar = true;}
+                else {myvar = false;}
             }
         });
-
         ftoggle2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    myvar2 = true;
-                } else {
-                    myvar2 = false;
-                }
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {myvar2 = true;}
+                else {myvar2 = false;}
+            }
+        });
+        fseekbar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                progress1=i;
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        fseekbar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                progress2=i;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
@@ -89,18 +110,18 @@ public class FanActivity extends AppCompatActivity {
     }
     private void myfunction(Boolean lmyvar , Boolean lmyvar2) {
 
-        SharedPreferences tokenSharedPreferences=getSharedPreferences("myToken", Context.MODE_PRIVATE);
+        /**SharedPreferences tokenSharedPreferences=getSharedPreferences("myToken", Context.MODE_PRIVATE);
         String strToken = tokenSharedPreferences.getString("token", null);
         SharedPreferences idSharedPreferences=getSharedPreferences("myId", Context.MODE_PRIVATE);
-        String strId = idSharedPreferences.getString("id", null);
+        String strId = idSharedPreferences.getString("id", null);*/
 
                 MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
-                RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item3Bool\"\r\n\r\n"+lmyvar+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item3Value\"\r\n\r\n0\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item4Bool\"\r\n\r\n"+lmyvar2+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item4Value\"\r\n\r\n0\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
+                RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item3Bool\"\r\n\r\n"+lmyvar+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item3Value\"\r\n\r\n"+String.valueOf(progress1)+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item4Bool\"\r\n\r\n"+lmyvar2+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"Item4Value\"\r\n\r\n"+String.valueOf(progress2)+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
                 request = new Request.Builder()
-                        .url("https://home-automation-aries.herokuapp.com/api/update/"+strId+"/")
+                        .url("https://home-automation-aries.herokuapp.com/api/update/2/")
                         .put(body)
                         .addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-                        .addHeader("Authorization", "Token "+strToken)
+                        .addHeader("Authorization", "Token 7675172a4f5fab39a37992885d5e98ac26167ba6")
                         .addHeader("Cache-Control", "no-cache")
                         .addHeader("Postman-Token", "c15ae0f5-decd-c961-7e4b-95109a850d6a")
                         .build();
@@ -109,8 +130,11 @@ public class FanActivity extends AppCompatActivity {
                 client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        String mMessage = e.getMessage().toString();
-                        Log.w("failure Response", mMessage);
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(FanActivity.this, "No internet connection!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
 
                     @Override

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Bulb 1"
+            android:text="Switch 1"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:id="@+id/textView1"
@@ -32,7 +32,7 @@
             android:layout_below="@+id/textView1"
             android:layout_alignParentEnd="true" />
         <TextView
-            android:text="Bulb 2"
+            android:text="Switch 2"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:id="@+id/textView2"
@@ -54,6 +54,98 @@
             android:id="@+id/ltoggleButton2"
             android:layout_below="@+id/textView2"
             android:layout_alignParentEnd="true" />
+        <TextView
+            android:text="Switch 3"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/lseekBar2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <SeekBar
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/lseekBar3"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/ltoggleButton3" />
+
+        <ToggleButton
+            android:text="ToggleButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ltoggleButton3"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:text="Switch 4"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/lseekBar3"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <SeekBar
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/lseekBar4"
+            android:layout_below="@+id/textView4"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/ltoggleButton4" />
+
+        <ToggleButton
+            android:text="ToggleButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ltoggleButton4"
+            android:layout_below="@+id/textView4"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:text="Switch 5"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/textView5"
+            android:layout_below="@+id/lseekBar4"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <SeekBar
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/lseekBar5"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/ltoggleButton5" />
+
+        <ToggleButton
+            android:text="ToggleButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ltoggleButton5"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:text="Switch 6"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/textView6"
+            android:layout_below="@+id/lseekBar5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <SeekBar
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/lseekBar6"
+            android:layout_below="@+id/textView6"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/ltoggleButton6" />
+
+        <ToggleButton
+            android:text="ToggleButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ltoggleButton6"
+            android:layout_below="@+id/textView6"
+            android:layout_alignParentEnd="true" />
 
 
         <Button
@@ -61,7 +153,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/sendbutton1"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/lseekBar2"
+            android:layout_below="@+id/lseekBar6"
             android:layout_marginEnd="77dp"
             android:text="Send" />
     </RelativeLayout>

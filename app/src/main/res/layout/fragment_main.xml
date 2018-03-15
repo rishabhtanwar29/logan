@@ -23,41 +23,53 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ToggleButton
-        android:text="ToggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:id="@+id/mtoggleButton1" />
-
-    <Button
-        android:text="Light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:id="@+id/blight"
-        android:layout_below="@+id/mtoggleButton1"
-        android:layout_alignStart="@+id/mtoggleButton1" />
-
-    <Button
+       <!-- <Button
         android:text="Fan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/blight"
         android:layout_alignEnd="@+id/blight"
         android:layout_marginTop="42dp"
-        android:id="@+id/bfan" />
+        android:id="@+id/bfan" /> -->
 
         <Button
             android:text="Logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bfan"
-            android:layout_alignEnd="@+id/bfan"
+            android:layout_below="@+id/blight"
+            android:layout_alignEnd="@+id/blight"
             android:layout_marginTop="42dp"
             android:id="@+id/blogout" />
+
+        <Button
+        android:text="Lights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:id="@+id/blight"
+            android:layout_below="@+id/mbutton"
+            android:layout_alignStart="@+id/mbutton" />
+
+        <Button
+            android:text="ON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mbutton"
+            android:layout_marginTop="80dp"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="Click On to mains on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/maintextView"
+            android:textStyle="normal|bold"
+            android:textAllCaps="false"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 
 </FrameLayout>
